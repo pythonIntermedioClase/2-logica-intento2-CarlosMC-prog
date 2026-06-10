@@ -91,17 +91,17 @@ def menu_encadenamiento():
     print("\n--- Encadenamiento de funciones ---")
 
     # TODO: descomenta cuando hayas completado limpiar_nit y validar_nit
-    # casos = ["900-123-456", "800.234.567", "ABC123", "123", "8001234560"]
-    # for nit in casos:
-    #     resultado = procesar_nit(nit)
-    #     print(f"  {resultado}")
+    casos = ["900-123-456", "800.234.567", "ABC123", "123", "8001234560"]
+    for nit in casos:
+         resultado = procesar_nit(nit)
+         print(f"  {resultado}")
 
     # TODO: descomenta cuando hayas completado pipeline_nit
-    # print()
-    # for nit in casos:
-    #     informe = pipeline_nit(nit)
-    #     print(f"  {informe}")
-    pass
+    print()
+    for nit in casos:
+        informe = pipeline_nit(nit)
+        print(f"  {informe}")
+    
 
 
 def menu_condicionales_simples():
