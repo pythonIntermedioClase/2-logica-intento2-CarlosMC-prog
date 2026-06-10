@@ -107,11 +107,8 @@ def calcular_iva(valor_base, tasa=0.19):
         calcular_iva(1_000_000, 0.05)  -> 50000.0
         calcular_iva(0)                -> 0.0
     """
-    # TODO:
-    # 1. Multiplica valor_base por tasa y guarda el resultado en una
-    #    variable llamada iva.
-    # 2. Retorna iva.
-    pass
+    iva = valor_base * tasa
+    return iva
 
 
 def formatear_reporte_valor(nit, nombre, valor, estado):
@@ -137,8 +134,8 @@ def formatear_reporte_valor(nit, nombre, valor, estado):
     #    (el :, dentro del f-string agrega separadores de miles al número)
     # 2. Guarda el resultado en una variable llamada linea.
     # 3. Retorna linea.
-    pass
-
+    linea=f"NIT{nit},{nombre},${valor},{estado}"
+    return linea
 
 def mostrar_resultado(etiqueta, valor):
     """
@@ -156,6 +153,7 @@ def mostrar_resultado(etiqueta, valor):
     #    "  {etiqueta}: ${valor:,.0f}"
     #    (el ,.0f formatea el número con separadores de miles y sin decimales)
     # Nota: este es un procedimiento, no retorna nada.
+    print(f"  {etiqueta}: ${valor:,.0f}")
     pass
 
 
@@ -198,7 +196,20 @@ def generar_ficha_contribuyente(nit, nombre, municipio, periodo, valor, estado):
     #    los caracteres de recuadro y los seis campos.
     #    Usa las variables intermedias del paso 1, 2 y 3.
     # 5. Retorna ficha.
-    pass
+    nombre_mayusculas = nombre.upper()
+    municipio_mayusculas = municipio.upper()
+    valor_formateado = f"${valor:,.0f}"
+    ficha = f"""╔══════════════════════════════════════╗
+║  FICHA DE CONTRIBUYENTE              ║
+╠══════════════════════════════════════╣
+NIT        : {nit}
+Nombre     : {nombre_mayusculas}
+Municipio  : {municipio_mayusculas}
+Periodo    : {periodo}
+Valor      : {valor_formateado}
+Estado     : {estado}
+╚══════════════════════════════════════╝"""
+    return ficha
 
 
 # ---------------------------------------------------------------------------
