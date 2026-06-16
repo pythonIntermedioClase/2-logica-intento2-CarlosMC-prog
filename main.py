@@ -133,21 +133,21 @@ def menu_condicionales_anidados():
     print("\n--- Condicionales anidados ---")
 
     # TODO: descomenta cuando hayas completado clasificar_mora
-    # casos = [(0, 0), (15, 800_000), (15, 200_000)]
-    # for dias, valor in casos:
-    #     clasificacion = clasificar_mora(dias, valor)
-    #     print(f"  {dias} días / ${valor:,} → {clasificacion}")
+    casos = [(0, 0), (15, 800_000), (15, 200_000)]
+    for dias, valor in casos:
+        clasificacion = clasificar_mora(dias, valor)
+        print(f"  {dias} días / ${valor:,} → {clasificacion}")
 
     # TODO: descomenta cuando hayas completado determinar_tipo_seguimiento
-    # registros_prueba = [
-    #     ("ACTIVO", 2_500_000, "Bogota"),
-    #     ("ACTIVO", 500_000, "Cali"),
-    #     ("PENDIENTE", 1_000_000, "Medellin"),
-    #     ("INACTIVO", 0, "Barranquilla"),
-    # ]
-    # for estado, valor, mun in registros_prueba:
-    #     tipo = determinar_tipo_seguimiento(estado, valor, mun)
-    #     print(f"  {estado} / ${valor:,} / {mun} → {tipo}")
+    registros_prueba = [
+        ("ACTIVO", 2_500_000, "Bogota"),
+        ("ACTIVO", 500_000, "Cali"),
+        ("PENDIENTE", 1_000_000, "Medellin"),
+        ("INACTIVO", 0, "Barranquilla"),
+    ]
+    for estado, valor, mun in registros_prueba:
+        tipo = determinar_tipo_seguimiento(estado, valor, mun)
+        print(f"  {estado} / ${valor:,} / {mun} → {tipo}")
     pass
 
 

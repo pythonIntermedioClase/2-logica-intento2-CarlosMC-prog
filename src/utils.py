@@ -480,7 +480,13 @@ def clasificar_mora(dias_mora, valor):
     #      retorna "Mora baja"
     # 2. else (no hay mora):
     #    retorna "Sin mora"
-    pass
+    if dias_mora > 0:
+        if valor > 500_000:
+            return "Mora alta"
+        else:
+            return "Mora baja"
+    else:
+        return "Sin mora"
 
 
 def determinar_tipo_seguimiento(estado, valor, municipio):
@@ -504,7 +510,17 @@ def determinar_tipo_seguimiento(estado, valor, municipio):
     #    - De lo contrario: retorna "Seguimiento estándar"
     # 2. elif estado == "PENDIENTE": retorna "Seguimiento urgente"
     # 3. else: retorna "Sin seguimiento"
-    pass
+    if estado == "ACTIVO":
+        municipio_prioritario = municipio == "Bogota" or municipio == "Medellin"
+        valor_alto = valor > 2_000_000
+        if municipio_prioritario and valor_alto:
+            return "Seguimiento estándar"
+        else:
+            return "Seguimiento estándar"
+    elif estado == "PENDIENTE":
+        return "Seguimiento urgente"
+    else:
+        return "Sin seguimiento"
 
 
 def evaluar_cumplimiento(estado, valor, dias_mora, historial):
