@@ -101,32 +101,30 @@ def menu_encadenamiento():
     for nit in casos:
         informe = pipeline_nit(nit)
         print(f"  {informe}")
-    
-
 
 def menu_condicionales_simples():
     """Sección 3: condicionales simples."""
     print("\n--- Condicionales simples ---")
 
     # TODO: descomenta cuando hayas completado esta_al_dia
-    # casos_mora = [0, 1, 30, 90]
-    # for dias in casos_mora:
-    #     al_dia = esta_al_dia(dias)
-    #     estado = "Al día" if al_dia else "En mora"
-    #     print(f"  {dias} días de mora → {estado}")
+    casos_mora = [0, 1, 30, 90]
+    for dias in casos_mora:
+        al_dia = esta_al_dia(dias)
+        estado = "Al día" if al_dia else "En mora"
+        print(f"  {dias} días de mora → {estado}")
 
     # TODO: descomenta cuando hayas completado aplicar_descuento
-    # valor_base = 1_000_000
-    # con_descuento = aplicar_descuento(valor_base, True)
-    # sin_descuento = aplicar_descuento(valor_base, False)
-    # mostrar_resultado("Con descuento voluntario", con_descuento)
-    # mostrar_resultado("Sin descuento", sin_descuento)
+    valor_base = 1_000_000
+    con_descuento = aplicar_descuento(valor_base, True)
+    sin_descuento = aplicar_descuento(valor_base, False)
+    mostrar_resultado("Con descuento voluntario", con_descuento)
+    mostrar_resultado("Sin descuento", sin_descuento)
 
     # TODO: descomenta cuando hayas completado asignar_prioridad
-    # casos = [(2_000_000, True), (2_000_000, False), (500_000, True), (500_000, False)]
-    # for valor, historial in casos:
-    #     prioridad = asignar_prioridad(valor, historial)
-    #     print(f"  ${valor:,} / historial={historial} → {prioridad}")
+    casos = [(2_000_000, True), (2_000_000, False), (500_000, True), (500_000, False)]
+    for valor, historial in casos:
+        prioridad = asignar_prioridad(valor, historial)
+        print(f"  ${valor:,} / historial={historial} → {prioridad}")
     pass
 
 
