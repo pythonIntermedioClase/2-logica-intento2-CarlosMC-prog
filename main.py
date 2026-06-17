@@ -162,12 +162,12 @@ def menu_condicionales_encadenados():
         print(f"  ${valor:,} → {categoria}")
 
     # TODO: descomenta cuando hayas completado calcular_sancion_basica
-    # dias_prueba = [0, 15, 45, 75, 120]
-    # valor_base = 1_000_000
-    # for dias in dias_prueba:
-    #     sancion = calcular_sancion_basica(dias, valor_base)
-    #     print(f"  {dias} días de mora → sanción: ${sancion:,.0f}")
-    pass
+    dias_prueba = [0, 15, 45, 75, 120]
+    valor_base = 1_000_000
+    for dias in dias_prueba:
+        sancion = calcular_sancion_basica(dias, valor_base)
+        print(f"  {dias} días de mora → sanción: ${sancion:,.0f}")
+    
 
 
 def menu_ciclos_for():

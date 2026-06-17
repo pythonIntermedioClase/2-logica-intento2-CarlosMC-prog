@@ -154,7 +154,7 @@ def mostrar_resultado(etiqueta, valor):
     #    (el ,.0f formatea el número con separadores de miles y sin decimales)
     # Nota: este es un procedimiento, no retorna nada.
     print(f"  {etiqueta}: ${valor:,.0f}")
-    pass
+    
 
 
 def generar_ficha_contribuyente(nit, nombre, municipio, periodo, valor, estado):
@@ -446,10 +446,10 @@ def asignar_prioridad(valor, tiene_historial_incumplimiento):
     #    - si valor_alto OR tiene_historial: retorna "MEDIA"
     #    - de lo contrario: retorna "BAJA"
     valor_alto = valor > 1000000
-    tiene_historial = tiene_historial_incumplimiento
-    if valor_alto and tiene_historial:
+    
+    if valor_alto and tiene_historial_incumplimiento:
         return "ALTA"
-    elif valor_alto or tiene_historial:
+    elif valor_alto or tiene_historial_incumplimiento:
         return "MEDIA"
     else:
         return "BAJA"
@@ -686,7 +686,19 @@ def calcular_sancion_basica(dias_mora, valor_base):
     #    - else: tasa = 0.10
     # 2. Calcula: sancion = valor_base * tasa
     # 3. Retorna sancion.
-    pass
+    if dias_mora == 0:
+        tasa = 0.0
+    elif dias_mora <=30:
+        tasa=0.01
+    elif dias_mora <= 60:
+        tasa=0.03
+    elif dias_mora <=90:
+        tasa=0.05
+    else:
+        tasa=0.10
+    
+    sancion= valor_base * tasa
+    return sancion
 
 
 def priorizar_cobro(valor, dias_mora, tipo_contribuyente):
@@ -711,8 +723,24 @@ def priorizar_cobro(valor, dias_mora, tipo_contribuyente):
     #    los casos más graves (GRANDE + mora_alta) van primero → P1
     #    los casos menos urgentes van al final → P5
     # 3. El else final retorna "P5".
-    pass
-
+    mora_alta = dias_mora>60
+    mora_media = dias_mora>30 and dias_mora <=60
+    valor_alto = valor > 1_000_000
+    if tipo_contribuyente == "GRANDE" and (mora_alta and valor_alto):
+        return "P1"
+    elif tipo_contribuyente == "GRANDE" and mora_alta:
+        return "P2"
+    elif tipo_contribuyente == "MEDIANO" and (mora_alta and valor_alto):
+        return "P2"
+    elif tipo_contribuyente == "MEDIANO" and mora_media:
+        return "P3"
+    elif tipo_contribuyente == "PEQUEÑO" and mora_alta:
+        return "P3"
+    elif mora_media:
+        return "P4"
+    else:
+        return "P5"
+    
 
 # ---------------------------------------------------------------------------
 # CICLOS FOR
