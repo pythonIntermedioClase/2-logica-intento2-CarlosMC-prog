@@ -552,7 +552,21 @@ def evaluar_cumplimiento(estado, valor, dias_mora, historial):
     #    - De lo contrario: retorna "Incumplimiento grave"
     #
     # 4. Para cualquier otro caso: retorna "Incumplimiento leve"
-    pass
+    if estado == "ACTIVO" and dias_mora ==0:
+        return "Cumplimiento total"
+    
+    if estado == "ACTIVO" and dias_mora > 0:
+        if dias_mora <= 30 and not historial:
+            return "Incumplimiento leve"
+        else:
+            return "Incumplimiento grave"
+    if estado == "PENDIENTE" or estado == "SUSPENDIDO":
+        if historial and valor >1_000_000:
+            return "Caso crítico"
+        else:
+            return "Incumplimiento leve"
+        
+    return "Incumplimiento leve"
 
 
 # ---------------------------------------------------------------------------
@@ -584,7 +598,16 @@ def clasificar_contribuyente(valor):
     # - elif valor > 100_000: retorna "PEQUEÑO"
     # - elif valor > 0: retorna "MÍNIMO"
     # - else: retorna "SIN VALOR"
-    pass
+    if valor > 5_000_000:
+        return "GRANDE"
+    elif valor > 1_000_000:
+        return "MEDIANO"
+    elif valor > 100_000:
+        return "PEQUEÑO"
+    elif valor > 0:
+        return "MÍNIMO"
+    else:
+        return "SIN VALOR"
 
 
 def describir_periodo(periodo):
@@ -614,7 +637,21 @@ def describir_periodo(periodo):
     #    - elif mes >= 7 and mes <= 9: retorna "Tercer trimestre"
     #    - elif mes >= 10 and mes <= 12: retorna "Cuarto trimestre"
     # 4. Al final: retorna "Período no reconocido" (si el mes no es 1-12)
-    pass
+    if len(periodo) !=6 or not periodo.isdigit():
+        return "Período no reconocido"
+    
+    mes = int(periodo[4:])
+
+    if mes >= 1 and mes <= 3:
+        return"Primer trimiestre"
+    elif mes >= 4 and mes <=6:
+        return "Segundo trimiestre"
+    elif mes >= 7 and mes <=9:
+        return "Tercer trimestre"
+    elif mes >=10 and mes <=12:
+        return "Cuarto trimestre"
+    else:
+        return "Período no reconocido"
 
 
 def calcular_sancion_basica(dias_mora, valor_base):
