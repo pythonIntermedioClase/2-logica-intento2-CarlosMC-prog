@@ -175,19 +175,19 @@ def menu_ciclos_for():
     print("\n--- Ciclos for ---")
 
     # TODO: descomenta cuando hayas completado imprimir_nits_validos
-    # nits_prueba = ["900123456", "ABC123", "800234567", "123", "400678901"]
-    # imprimir_nits_validos(nits_prueba)
+    nits_prueba = ["900123456", "ABC123", "800234567", "123", "400678901"]
+    imprimir_nits_validos(nits_prueba)
 
     # TODO: descomenta cuando hayas completado calcular_totales
-    # valores = [1_500_000, 850_000, 0, 2_300_000, 950_000, 3_200_000, 450_000, 1_100_000]
-    # total, promedio, maximo = calcular_totales(valores)
-    # mostrar_resultado("Total", total)
-    # mostrar_resultado("Promedio", promedio)
-    # mostrar_resultado("Máximo", maximo)
+    valores = [1_500_000, 850_000, 0, 2_300_000, 950_000, 3_200_000, 450_000, 1_100_000]
+    total, promedio, maximo = calcular_totales(valores)
+    mostrar_resultado("Total", total)
+    mostrar_resultado("Promedio", promedio)
+    mostrar_resultado("Máximo", maximo)
 
     # TODO: descomenta cuando hayas completado generar_periodos_multiple
-    # periodos = generar_periodos_multiple(2024, 2025, 3)
-    # print(f"  Períodos generados: {periodos}")
+    periodos = generar_periodos_multiple(2024, 2025, 3)
+    print(f"  Períodos generados: {periodos}")
     pass
 
 
@@ -196,9 +196,9 @@ def menu_ciclos_while():
     print("\n--- Ciclos while ---")
 
     # TODO: descomenta cuando hayas completado buscar_primer_valido
-    # nits_mixtos = ["ABC123", "123", "900123456", "800234567"]
-    # primer_valido = buscar_primer_valido(nits_mixtos)
-    # print(f"  Primer NIT válido encontrado: {primer_valido}")
+    nits_mixtos = ["ABC123", "123", "900123456", "800234567"]
+    primer_valido = buscar_primer_valido(nits_mixtos)
+    print(f"  Primer NIT válido encontrado: {primer_valido}")
 
     # TODO: descomenta cuando hayas completado sumar_hasta_limite
     # valores = [1_500_000, 850_000, 2_300_000, 950_000]

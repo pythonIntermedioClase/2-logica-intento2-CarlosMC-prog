@@ -762,7 +762,12 @@ def imprimir_nits_validos(nits):
     #    - Llama a validar_nit(nit)
     #    - Si es válido: imprime "  {contador}. {nit}"
     #      e incrementa: contador = contador + 1
-    pass
+    print("NITs válidos: ")
+    contador = 1
+    for nit in nits:
+        if validar_nit(nit):
+            print(f" {contador}. {nit}")
+            contador += 1
 
 
 def calcular_totales(valores):
@@ -792,7 +797,16 @@ def calcular_totales(valores):
     #    - Actualiza el máximo: si valor > maximo, haz maximo = valor
     # 4. Calcula el promedio: promedio = total / len(valores)
     # 5. Retorna total, promedio, maximo (los tres en esa línea)
-    pass
+    total=0
+    maximo=valores[0]
+    for valor in valores:
+        total = total + valor
+        if valor > maximo:
+            maximo = valor
+        
+        promedio = total/len(valores)
+        return total, promedio, maximo
+
 
 
 def generar_periodos_multiple(anio_inicio, anio_fin, meses_por_anio=12):
@@ -823,7 +837,12 @@ def generar_periodos_multiple(anio_inicio, anio_fin, meses_por_anio=12):
     #      (el :02d formatea el mes con cero a la izquierda: 1 -> "01")
     #    - Agrega a la lista: periodos.append(codigo)
     # 4. Retorna periodos
-    pass
+    periodos = []
+    for anio in range(anio_inicio, anio_fin +1):
+        for mes in range(1,meses_por_anio + 1):
+            codigo = f"{anio}{mes:02d}"
+            periodos.append(codigo)
+    return periodos
 
 
 # ---------------------------------------------------------------------------
@@ -848,7 +867,14 @@ def buscar_primer_valido(nits):
     #    - Incrementa: indice = indice + 1
     #      (esta línea va SIEMPRE dentro del while, válido o no)
     # 3. Si el while termina sin retornar: retorna None
-    pass
+    indice = 0
+    while indice < len(nits):
+        nit=nits[indice]
+        if validar_nit(nit):
+            return nit
+        indice = indice + 1
+    
+    return None
 
 
 def sumar_hasta_limite(valores, limite):
